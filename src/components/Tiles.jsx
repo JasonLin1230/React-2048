@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import {get_used} from "../utils/getTiles"
-
 
 class Tiles extends Component{
     render(){
         var board = this.props.board;
-        var tiles = get_used(board);
         return <div className="board">{
-            tiles.map((key) => {
-                var val = board[key];
-                return <span key={key} className={key + " value" + val}>
-                {val}
-                </span>;
-            })}</div>
+            Object.keys(board).map((line) => {
+                return board[line].map((element,eIndex) => {
+                    if(element !== 0){
+                        return <span 
+                                    key={line+eIndex} 
+                                    className={"value"+element}
+                                    style={{top:line*55+5+"px",left:eIndex*55+5+"px"}}>
+                                {element}
+                                </span>;
+                    }
+                })
+            })
+        }</div>
     }
 };
 

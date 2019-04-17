@@ -1,5 +1,25 @@
 # Takehome for an interview
 
+
+**使用React实现2048**
+
+---
+
+1.0版本面试失败的原因
+
+```
+var initBoard = {
+  a1: null,a2: null,a3: null,a4: null,
+  b1: null,b2: null,b3: null,b4: null,
+  c1: null,c2: null,c3: null,c4: null,
+  d1: null,d2: null,d3: null,d4: null
+};
+```
+
+> 因为在表达4X4矩阵时，你采取的方式是直接声明16个位置，但若做成1000X1000的形式，你的方式可能是非人力所能及的。
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

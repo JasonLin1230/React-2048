@@ -45,16 +45,16 @@ var left = [
       default:
         break;
     }
-    drection.forEach(line => {
-      var new_line = handle_line(board, line); 
-      Object.keys(new_line).forEach(key => {
-        Object.keys(board).forEach(item => {
-            if(key === item){
-              board[item]=new_line[key];
-            }
-        });
-      });
-    });
+    // drection.forEach(line => {
+    //   var new_line = handle_line(board, line); 
+    //   Object.keys(new_line).forEach(key => {
+    //     Object.keys(board).forEach(item => {
+    //         if(key === item){
+    //           board[item]=new_line[key];
+    //         }
+    //     });
+    //   });
+    // });
     return board;
   }
   //   处理棋盘的对应操作的每行
