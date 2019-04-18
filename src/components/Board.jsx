@@ -3,7 +3,7 @@ import Tiles from "./Tiles";
 import handleKeyDown from "../utils/handleMove";
 import {get_vacant,get_used} from "../utils/getTiles"
 // import is_over from "../utils/isOver";
-//初始化棋盘矩阵数组   
+//初始化棋盘矩阵数组对象   
 // eslint-disable-next-line no-array-constructor
 var initBoard={};                 
 for(var x=0;x<4;x++){
@@ -20,25 +20,26 @@ function add_new(board) {
   // 新生成一个随机的2或4
   var newNum = Math.random() * 5 < 4 ? 2 : 4;
   var vacant = get_vacant(board);
-  console.log(vacant);
   var random_index = Math.floor(Math.random() * vacant);
   if (random_index) {
     let count = 0;
     Object.keys(board).forEach(line => {
-      board[line].forEach(element => {
-        if(element === 0){
+      var len=(board[line]).length;
+      for(let i=0;i<len;++i){
+        var element=board[line].slice(i,i+1);
+        if(element == 0){
           if(count === random_index){
-            board[line][element] = newNum;
+            board[line].splice(i,1,newNum);
+            count++;
           }else{
             count++;
           }
         }
-      })
+      }
     });
   }
-  //使用本地存储，保存游戏进度
-  // localStorage.setItem("board",JSON.stringify(board));
-  console.log(board);
+  // 使用本地存储，保存游戏进度
+  localStorage.setItem("board",JSON.stringify(board));
   return board;
 }
 
